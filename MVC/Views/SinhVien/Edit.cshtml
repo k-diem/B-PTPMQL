@@ -1,0 +1,90 @@
+@model MVC.Models.SinhVienWithBookViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+<h1>Sửa thông tin sinh viên</h1>
+<hr />
+<div class="max-width-40 ud-center">
+    <div class="w3-container w3-blue w3-round">
+        <h2 class="w3-center">Sửa thông tin</h2>
+    </div>
+    <form asp-action="Edit" class="w3-container w3-card-4">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="IdSV" />
+        <div class="w3-row w3-margin-top">
+            <div class="w3-col l8">
+                <label asp-for="NameSV" class="control-label"></label>:
+                <input asp-for="NameSV" class="form-control" />
+                <span asp-validation-for="NameSV" class="text-danger"></span>
+            </div>
+            <div class="w3-col l3 w3-right">
+                <label asp-for="Khoa" class="control-label"></label>:
+                <input asp-for="Khoa" class="form-control" />
+                <span asp-validation-for="Khoa" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="w3-row w3-margin-top">
+            <div class="w3-col l8">
+                <label asp-for="PhoneSV" class="control-label"></label>:
+                <input asp-for="PhoneSV" class="form-control" />
+                <span asp-validation-for="PhoneSV" class="text-danger"></span>
+            </div>
+            <div class="w3-col l3 w3-right">
+                <label asp-for="ClassName" class="control-label"></label>:
+                <input asp-for="ClassName" class="form-control" />
+                <span asp-validation-for="ClassName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="w3-row w3-margin-top">
+            <div class="w3-col l8">
+                <label asp-for="IdBook" class="control-label">Mã sách</label>
+                <select asp-for="IdBook" class="w3-select w3-border w3-border-blue w3-round">
+                    <option value="">Chọn mã sách</option> <!-- Lựa chọn mặc định -->
+                    @foreach (var book in ViewBag.BookList)
+                    {
+                        <option value="@book.IdBook">@Html.Raw(book.NameBook)</option>
+                    }
+                </select>
+                <span asp-validation-for="IdBook" class="text-danger"></span>
+            </div>
+            <div class="w3-col l3 w3-right">
+                <label asp-for="Status" class="control-label">Tình trạng mượn sách</label>
+                <select asp-for="Status" class="w3-select w3-border w3-border-blue w3-round" id="statusSelect">
+                    <option value="">Chọn mã sách</option> <!-- Lựa chọn mặc định -->
+                    <option value="0">Đang mượn sách</option>
+                    <option value="1">Đã trả sách</option>
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="w3-row w3-margin-top">
+            <div class="w3-col l8">
+                <label asp-for="BorrowDate" class="control-label"></label>:
+                <input asp-for="BorrowDate" class="form-control" />
+                <span asp-validation-for="BorrowDate" class="text-danger"></span>
+            </div>
+            <div class="w3-col l3 w3-right">
+                <label asp-for="PayDate" class="control-label"></label>:
+                <input asp-for="PayDate" class="form-control" />
+                <span asp-validation-for="PayDate" class="text-danger"></span>
+            </div>
+        </div>
+        <hr>
+        <div class="w3-row w3-margin-top w3-margin-bottom">
+            <a asp-action="Index" class="w3-btn w3-green w3-round">Quay lại</a>
+            <input type="submit" value="Save" class="w3-btn w3-blue w3-round w3-right" />
+        </div>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Kiểm tra trạng thái khi trang được nạp
+        var initialStatus = $('#statusSelect').val();
+
+        // Nếu trạng thái là "Đã trả sách", vô hiệu hóa ô chọn
+        if (initialStatus === '1') {
+            $('#statusSelect').prop('disabled', true);
+        }
+    });
+</script>

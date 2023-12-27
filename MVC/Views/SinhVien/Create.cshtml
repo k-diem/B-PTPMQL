@@ -1,0 +1,83 @@
+@model MVC.Models.SinhVien
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Thêm mới</h1>
+
+<hr />
+<div class="max-width-40 ud-center">
+    <div class="w3-container w3-teal">
+        <h2>Tạo mới sinh viên mượn sách</h2>
+    </div>
+    <form asp-action="Create" class="w3-container w3-card-4 w3-padding">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="w3-row">
+            <div class="w3-col l3">
+                <label asp-for="IdSV" class="control-label">Mã sinh viên</label>
+                <input asp-for="IdSV" class="w3-input w3-border w3-border-blue w3-round" />
+                <span asp-validation-for="IdSV" class="text-danger"></span>
+            </div>
+            <div class="w3-col l8 w3-right">
+                <label asp-for="NameSV" class="control-label">Tên sinh viên</label>
+                <input asp-for="NameSV" class="w3-input w3-border w3-border-blue w3-round" />
+                <span asp-validation-for="NameSV" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="w3-row">
+            <div class="w3-col l3">
+                <label asp-for="Khoa" class="control-label">Khoá</label>
+                <input asp-for="Khoa" class="w3-input w3-border w3-border-blue w3-round" />
+                <span asp-validation-for="Khoa" class="text-danger"></span>
+            </div>
+            <div class="w3-col l8 w3-right">
+                <label asp-for="ClassName" class="control-label">Lớp</label>
+                <input asp-for="ClassName" class="w3-input w3-border w3-border-blue w3-round" />
+                <span asp-validation-for="ClassName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="w3-row">
+            <div class="w3-col l3">
+                <label asp-for="PhoneSV" class="control-label">Số điện thoại</label>
+                <input asp-for="PhoneSV" class="w3-input w3-border w3-border-blue w3-round" />
+                <span asp-validation-for="PhoneSV" class="text-danger"></span>
+            </div>
+            <div class="w3-col l8 w3-right">
+                <label asp-for="IdBook" class="control-label">Sách mượn</label>
+                <select asp-for="IdBook" class="w3-select w3-border w3-border-blue w3-round">
+                    <option value="">Chọn mã sách</option> <!-- Lựa chọn mặc định -->
+                    @foreach (var book in ViewBag.BookList)
+                    {
+                        <option value="@book.IdBook">@Html.Raw(book.NameBook)</option>
+                    }
+                </select>
+                <span asp-validation-for="IdBook" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="w3-row">
+            <div class="w3-col l3">
+                <label asp-for="BorrowDate" class="control-label">Ngày mượn</label>
+                <input asp-for="BorrowDate" type="date" class="w3-input w3-border w3-border-blue w3-round" />
+                <span asp-validation-for="BorrowDate" class="text-danger"></span>
+            </div>
+            <div class="w3-col l8 w3-right">
+                <label asp-for="PayDate" class="control-label">Hạn trả</label>
+                <input asp-for="PayDate" type="date" class="w3-input w3-border w3-border-blue w3-round" />
+                <span asp-validation-for="PayDate" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="w3-margin-top">
+            <a class="w3-btn w3-round w3-green w3-card-4" asp-action="Index">Quay lại</a>
+            <input type="submit" value="Create" class="w3-btn w3-blue w3-right w3-round w3-card-4" />
+        </div>
+    </form>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

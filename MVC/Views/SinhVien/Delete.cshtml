@@ -1,0 +1,102 @@
+@model MVC.Models.SinhVienWithBookViewModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Nhan Vien</h4>
+    <hr />
+    <div class="max-width-40 ud-center">
+        <div class="w3-container w3-red w3-round">
+            <h2 class="w3-center">Bạn có muốn xoá sinh viên mượn sách hay không?</h2>
+        </div>
+        <div class="w3-container w3-card-4">
+            <dl class="w3-row w3-margin-top">
+                <dt class="w3-col l2"> Mã sinh viên</dt>
+                <dd class="w3-col l3">
+                    @Html.DisplayFor(model => model.IdSV)
+                </dd>
+
+                <dd class="w3-col l2 w3-right">
+                    @Html.DisplayFor(model => model.NameSV)
+                </dd>
+                <dt class="w3-col l2 w3-right">
+                    Tên sinh viên
+                </dt>
+            </dl>
+            <dl class="w3-row">
+                <dt class="w3-col l2">
+                    Khoá
+                </dt>
+                <dd class="w3-col l3">
+                    @Html.DisplayFor(model => model.Khoa)
+                </dd>
+
+                <dd class="w3-col l2 w3-right">
+                    @Html.DisplayFor(model => model.ClassName)
+                </dd>
+                <dt class="w3-col l2 w3-right">
+                    Lớp
+                </dt>
+            </dl>
+            <dl class="w3-row">
+                <dt class="w3-col l2">
+                    Số điện thoại
+                </dt>
+                <dd class="w3-col l3">
+                    @Html.DisplayFor(model => model.PhoneSV)
+                </dd>
+
+                <dd class="w3-col l2 w3-right">
+                    @Html.DisplayFor(model => model.NameBook)
+                </dd>
+                <dt class="w3-col l2 w3-right">
+                    Sách
+                </dt>
+            </dl>
+            <dl class="w3-row">
+                <dt class="w3-col l2">
+                    Ngày mượn sách
+                </dt>
+                <dd class="w3-col l3">
+                    @Html.DisplayFor(model => model.BorrowDate)
+                </dd>
+
+                <dd class="w3-col l2 w3-right">
+                    @Html.DisplayFor(model => model.PayDate)
+                </dd>
+                <dt class="w3-col l2 w3-right">
+                    Ngày trả sách
+                </dt>
+            </dl>
+            <dl class="w3-row">
+                <dt class="w3-col l2">
+                    Tình trạng mượn sách
+                </dt>
+                <dd class="w3-col l3">
+                @if (Model.Status == 0)
+                {
+                    <text>Đang mượn sách</text>
+                }
+                else if (Model.Status == 1)
+                {
+                    <text>Đã trả sách</text>
+                }
+            </dd>
+            <hr>
+            <div class="w3-row">
+                <div class="w3-col l3">
+                    <a asp-action="Index" class="w3-btn w3-green w3-round w3-margin-bottom">Quay lại</a>
+                </div>
+                <div class="w3-right">
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="IdSV" />
+                        <input type="submit" value="Xoá" class="w3-btn w3-red w3-round w3-margin-bottom" />
+                    </form>
+                </div>
+            </div>
+        </div>
