@@ -1,0 +1,50 @@
+@model IEnumerable<MVC.Models.Book>
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="w3-container">
+    <div class="w3-row">
+        <h2>Danh mục sách trong thư viện</h2>
+        <a asp-action="Create" class="w3-btn w3-border w3-border-blue w3-round w3-right w3-tiny w3-horver-blue">Thêm mới</a>
+    </div>
+    <hr />
+    <table class="w3-table-all w3-card-4 w3-centered">
+        <thead>
+            <tr class="w3-blue">
+                <th class="w3-col l2">Mã sách</th>
+                <th class="w3-col l4">Tên sách</th>
+                <th class="w3-col l2">Số lượng sách</th>
+                <th class="w3-col l2">Năm xuất bản</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                @foreach (var item in Model)
+
+                {
+                    <tr>
+                        <td class="w3-col l2">@item.IdBook</td>
+                        <td class="w3-col l4">@item.NameBook</td>
+                        <td class="w3-col l2">@item.Number</td>
+                        <td class="w3-col l2">@item.Year</td>
+                        <td class="w3-col l2">
+                            <a asp-action="Edit" asp-route-id="@item.IdBook"
+                                class="w3-button w3-green w3-round-large w3-small"><i class="fa fa-edit"></i></a>
+                            <a asp-action="Delete" asp-route-id="@item.IdBook"
+                                class="w3-button w3-red w3-round-large w3-small"><i class="fa fa-trash"></i></a>
+                            <a asp-action="Details" asp-route-id="@item.IdBook"
+                                class="w3-button w3-pink w3-round-large w3-small"><i class="fa fa-trash"></i></a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<hr>
+@Html.PagedListPager((IPagedList) Model, page => Url.Action("Index", new {page = page}), new X.PagedList.Web.Common.PagedListRenderOptions { LiElementClasses = new string[] {"page-item"}, PageClasses = new string[] { "page-link" }})

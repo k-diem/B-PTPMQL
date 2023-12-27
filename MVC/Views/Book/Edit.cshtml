@@ -1,0 +1,44 @@
+@model MVC.Models.Book
+@{
+    ViewData["Title"] = "Edit";
+}
+<h1>Sửa thông tin sách</h1>
+<hr />
+<div class="max-width-40 ud-center">
+    <div class="w3-container w3-blue w3-round">
+        <h2 class="w3-center">Sửa thông tin</h2>
+    </div>
+    <form asp-action="Edit" class="w3-container w3-card-4">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="IdBook" />
+        <div class="w3-row w3-margin-top">
+            <div class="w3-col l8">
+                <label asp-for="NameBook" class="control-label"></label>:
+                <input asp-for="NameBook" class="form-control" />
+                <span asp-validation-for="NameBook" class="text-danger"></span>
+            </div>
+            <div class="w3-col l3 w3-right">
+                <label asp-for="Number" class="control-label"></label>:
+                <input asp-for="Number" class="form-control" />
+                <span asp-validation-for="Number" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="w3-row w3-margin-top">
+            <div class="w3-col l8">
+                <label asp-for="NhaXuatBan" class="control-label"></label>:
+                <input asp-for="NhaXuatBan" class="form-control" />
+                <span asp-validation-for="NhaXuatBan" class="text-danger"></span>
+            </div>
+            <div class="w3-col l3 w3-right">
+                <label asp-for="Year" class="control-label"></label>:
+                <input asp-for="Year" class="form-control" />
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+        </div>
+        <hr>
+        <div class="w3-row w3-margin-top w3-margin-bottom">
+            <a asp-action="Index" class="w3-btn w3-green w3-round">Quay lại</a>
+            <input type="submit" value="Save" class="w3-btn w3-blue w3-round w3-right" />
+        </div>
+    </form>
+</div>

@@ -1,0 +1,58 @@
+@model MVC.Models.Book
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Thông tin</h1>
+
+<div>
+    <hr />
+    <div class="max-width-40 ud-center">
+        <div class="w3-container w3-red w3-round">
+            <h2 class="w3-center">Thông tin chi tiết sách</h2>
+        </div>
+        <div class="w3-container w3-card-4">
+            <dl class="w3-row w3-margin-top">
+                <dt class="w3-col l2"> Mã sách</dt>
+                <dd class="w3-col l3">
+                    @Html.DisplayFor(model => model.IdBook)
+                </dd>
+
+                <dd class="w3-col l2 w3-right">
+                    @Html.DisplayFor(model => model.NameBook)
+                </dd>
+                <dt class="w3-col l2 w3-right">
+                    Tên sách
+                </dt>
+            </dl>
+            <dl class="w3-row">
+                <dt class="w3-col l2">
+                    Số lượng
+                </dt>
+                <dd class="w3-col l3">
+                    @Html.DisplayFor(model => model.Number)
+                </dd>
+
+                <dd class="w3-col l2 w3-right">
+                    @Html.DisplayFor(model => model.Year)
+                </dd>
+                <dt class="w3-col l2 w3-right">
+                    Năm xuất bản
+                </dt>
+            </dl>
+            <dl class="w3-row">
+                <dt class="w3-col l2">
+                    Nhà xuất bản
+                </dt>
+                <dd class="w3-col l3">
+                    @Html.DisplayFor(model => model.NhaXuatBan)
+                </dd>
+            </dl>
+            <hr>
+            <div class="w3-row">
+                <div class="w3-col l3">
+                    <a asp-action="Index" class="w3-btn w3-green w3-round w3-margin-bottom">Quay lại</a>
+                </div>
+            </div>
+        </div>

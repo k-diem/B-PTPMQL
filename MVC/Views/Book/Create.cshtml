@@ -1,0 +1,78 @@
+@model MVC.Models.Book
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Tạo sách mới</h1>
+    <form asp-action="Upload" enctype="multipart/form-data">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Import data</label>
+            <div class="col-sm-6">
+                <div class="input-group">
+                    <input type="file" class="custom-file-input" id="inputGroupFile" name="file">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <input type="submit" value="Upload" class="btn btn-sm btn-primary">
+            </div>
+        </div>
+        </form>
+<hr>      
+<div class="max-width-40 ud-center">
+    <div class="w3-container w3-teal">
+        <h2> Thêm mới sách</h2>
+    </div>
+    <form asp-action="Create" class="w3-container w3-card-4 w3-padding">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="w3-row">
+            <div class="w3-col l3">
+                <label asp-for="IdBook" class="control-label">Mã sách</label>
+                <input asp-for="IdBook" class="w3-input w3-border w3-border-blue w3-round" />
+                <span asp-validation-for="IdBook" class="text-danger"></span>
+            </div>
+            <div class="w3-col l8 w3-right">
+                <label asp-for="NameBook" class="control-label">Tên sách</label>
+                <input asp-for="NameBook" class="w3-input w3-border w3-border-blue w3-round" />
+                <span asp-validation-for="NameBook" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="w3-row">
+            <div class="w3-col l3">
+                <label asp-for="Number" class="control-label">Số lượng</label>
+                <input asp-for="Number" class="w3-input w3-border w3-border-blue w3-round" />
+                <span asp-validation-for="Number" class="text-danger"></span>
+            </div>
+            <div class="w3-col l8 w3-right">
+                <label asp-for="Year" class="control-label">Năm xuất bản</label>
+                <select asp-for="Year" class="w3-select w3-border w3-border-blue w3-round">
+                    <option value="">Năm xuất bản</option> <!-- Lựa chọn mặc định -->
+                    @for (int Year = 2000; Year <= 2023; Year++)
+                    {
+                        <option class="year-option" value="@Year">@Year</option>
+                    }
+                </select>
+                <span asp-validation-for="Year" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="w3-row">
+            <div class="w3-col l3">
+                <label asp-for="NhaXuatBan" class="control-label">Nhà xuất bản</label>
+                <input asp-for="NhaXuatBan" class="w3-input w3-border w3-border-blue w3-round" />
+                <span asp-validation-for="NhaXuatBan" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="w3-margin-top">
+            <a class="w3-btn w3-round w3-green w3-card-4" asp-action="Index">Quay lại</a>
+            <input type="submit" value="Create" class="w3-btn w3-blue w3-right w3-round w3-card-4" />
+        </div>
+    </form>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
