@@ -1,0 +1,32 @@
+@model IEnumerable<MVC.Models.SinhVienWithBookViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="w3-container">
+    <div class="w3-row">
+        <b>Thống kê</b>
+    </div>
+    <hr />
+    <table class="w3-table-all w3-card-4 w3-centered">
+        <thead>
+            <tr class="w3-blue">
+                <th class="w3-col l4">Tổng số sinh viên mượn sách</th>
+                <th class="w3-col l4">Tổng số sinh viên đang mượn</th>
+                <th class="w3-col l3">Tổng số sinh viên đã trả</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="w3-col l4"><a href="@Url.Action("Index", "SinhVien")">@ViewBag.TotalStudents</a></td>
+                <td class="w3-col l4"><a
+                        href="@Url.Action("Index", "SinhVien", new { Status = 1, IdSV = "", NameSV = "" })">@ViewBag.TotalBorrowingStudents</a>
+                </td>
+                <td class="w3-col l3"><a
+                        href="@Url.Action("Index", "SinhVien", new { Status = 2, IdSV = "", NameSV = "" })">@ViewBag.TotalPayingStudents</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -8657,19 +8657,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\LAPTOP TCC\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\PTPMQL_01\\B-PTPMQL\\MVC\\MVC.csproj",
+      "projectUniqueName": "D:\\BTL PTPMQL\\B-PTPMQL\\MVC\\MVC.csproj",
       "projectName": "MVC",
-      "projectPath": "D:\\PTPMQL_01\\B-PTPMQL\\MVC\\MVC.csproj",
-      "packagesPath": "C:\\Users\\LAPTOP TCC\\.nuget\\packages\\",
-      "outputPath": "D:\\PTPMQL_01\\B-PTPMQL\\MVC\\obj\\",
+      "projectPath": "D:\\BTL PTPMQL\\B-PTPMQL\\MVC\\MVC.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "D:\\BTL PTPMQL\\B-PTPMQL\\MVC\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\LAPTOP TCC\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"

@@ -44,7 +44,6 @@ namespace MVC.Models
         public DateTime? BorrowDate { get; set; }
         public string? NameBook { get; set; }
         public DateTime? PayDate { get; set; }
-        public bool ClearFilter { get; set; }
         public int DelayDays { get; set; }
         public int Status { get; set; }
         public int? IdBook { get; set; }
